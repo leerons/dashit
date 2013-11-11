@@ -6,10 +6,10 @@ var port_17 = gpio.export(17, {interval: 400, ready: function(){
 
 function ledOn(){
     port_17.set();
-    setTimeOut(ledOff, 1000);
+    setTimeout(ledOff, 1000);
 }
 
 function ledOff(){
     port_17.reset();
-    setTimeOut(ledOn, 1000);
+    setTimeout(ledOn, 1000);
 }
