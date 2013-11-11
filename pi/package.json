@@ -1,3 +1,8 @@
-"dependencies": 
-    "ddp": ">= 0.3.7"
+{
+    "name": "da-shit-pi",
+    "version": "0.0.1",
+    "author": "Leeron Shalev <23leeron23@gmail.com>"
+    "dependencies": {
+        "ddp": ">= 0.3.7"
+    } 
 }
