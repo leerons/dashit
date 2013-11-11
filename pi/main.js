@@ -1,6 +1,6 @@
 var gpio = require("gpio");
 
-var LED_PORT = 17, SWITCH_PORT = 25;
+var LED_PORT = 17, SWITCH_PORT = 27;
 
 var ledPort = gpio.export(LED_PORT, {direction: 'out'});
 var switchPort = gpio.export(SWITCH_PORT, {direction: 'in', interval:400});
