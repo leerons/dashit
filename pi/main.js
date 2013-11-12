@@ -8,7 +8,7 @@ var switchPort = gpio.export(SWITCH_PORT, {direction: 'in', interval:400});
 switchPort.on('change', function(val){
     console.log("switch value: " + val);
     ledPort.set(val);
-    ddpclient.call('toiletRoomStateChange', {"value": val}, function(err, result) {
+    ddpclient.call('toiletRoomStateChange', [val], function(err, result) {
         console.log('called toiletRoomStateChange on server, result: ' + result);
     });
 });

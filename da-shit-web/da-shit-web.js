@@ -18,14 +18,14 @@ if (Meteor.isServer) {
   });
 
   Meteor.methods({
-    toiletRoomStateChange: function(data){
-      if(data.value == 1){
+    toiletRoomStateChange: function(value){
+      if(value == 1){
           console.log("Wax on!");
       } else {
           console.log("Wax off!");
       }
 
-      return "value = " + data.value;
+      return "value = " + value;
     }
   });
 }
