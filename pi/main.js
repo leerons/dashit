@@ -9,7 +9,7 @@ switchPort.on('change', function(val){
     console.log("switch value: " + val);
     ledPort.set(val);
     ddpclient.call('toiletRoomStateChange', [val], function(err, result) {
-        console.log('called toiletRoomStateChange on server, result: ' + result);
+        console.log('server result: ' + result);
     });
 });
 
@@ -21,12 +21,8 @@ var DDPClient = require("ddp");
 var ddpclient = new DDPClient({
   host: "192.168.28.15", 
   port: 3000,
-  /* optional: */
   auto_reconnect: true,
   auto_reconnect_timer: 500,
-  use_ejson: true,  // default is false
-  use_ssl: false, //connect to SSL server,
-  use_ssl_strict: true //Set to false if you have root ca trouble.
 });
 
 ddpclient.connect(function(error) {
