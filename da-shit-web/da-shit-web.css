@@ -8,7 +8,16 @@
 
 html, body{
     height: 100%;
+    width: 100%;
     background-color: #EBEBEB;
+}
+
+#content{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 #logo{
@@ -47,3 +56,44 @@ html, body{
     /* W3C Markup, IE10 Release Preview */ 
     background-image: linear-gradient(to bottom, #CDCDCD 0%, #F5F5F5 100%);
 }
+
+#bathrooms, #room_0, #room_1, #room_2, .door, .indicator-light, #message{
+    position: absolute;
+}
+
+.close{
+    background-image: url("door-close.jpg");
+    background-size: contain;
+    background-repeat:no-repeat;
+}
+
+.open{
+    background-image: url("door-open.jpg");
+    background-size: contain;
+    background-repeat:no-repeat;
+}
+
+.red{
+    background-image: url("indicator-light-red.jpg");
+    background-size: contain;
+    background-repeat:no-repeat;
+}
+
+.green{
+    background-image: url("indicator-light-green.jpg");
+    background-size: contain;
+    background-repeat:no-repeat;
+}
+
+.woohoo{
+    background-image: url("woohoo.png");
+    background-size: contain;
+    background-repeat:no-repeat;
+}
+
+.oops{
+    background-image: url("oops.png");
+    background-size: contain;
+    background-repeat:no-repeat;
+}
+

@@ -1,17 +1,37 @@
 <head>
   <title>WiX daShit</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 
 <body>
-  <div id="logo"></div>
-  <div id="floor">
-  </div>
+  <div id="floor" />
+  <div id="content">
+    <div id="logo"></div>
+    <div id="bathrooms">
+        {{> bathrooms}}
+    </div>
+    <div id="message">
+        {{> message}}
+    </div>
+  </div> 
 </body>
 
-<!-- {{> comming_soon}} -->
 
-<template name="comming_soon">
-  <h1>WiX daShit is coming...</h1>
-  <div>{{description}}</div>
-  <div>{{rooms}}</div>
+<template name="bathrooms">
+  {{#each rooms}}
+    {{> room}}
+  {{/each}}
+</template>
+
+<template name="room">
+  <div id="room_{{index}}">
+    <div class="indicator-light {{indicatorState}}"></div>
+    <div class="door {{doorState}}"></div>
+  </div>
+</template>
+
+<template name="message">
+  <div id="message-title" class="{{title}}"></div>
+  <div id="message-content" class="{{content}}"></div>
+  <div id="message-graphics" class="{{graphics}}"></div>
 </template>
