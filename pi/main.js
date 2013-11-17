@@ -58,7 +58,7 @@ function sendStateUpdateToServer(index, value){
   var room = index;
   var state = value ? "open" : "close";
   var data = {"floor": floor, "room": room, "state": state};
-  console.log("Sending server update: " + JSON.stingify(data));
+  console.log("Sending server update: " + JSON.stringify(data));
   ddpclient.call('toiletRoomStateChange', [data], function(err, result) {
       if(err){
         console.log("Server error: "+ err);
