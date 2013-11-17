@@ -26,7 +26,6 @@ var BATHROOM_PORTS = [{"index": 0, "portID": 2},
                       {"index": 1, "portID": 3}, 
                       {"index": 2, "portID": 4}];
 
-var currentSate = [];
 var pendingPorts = BATHROOM_PORTS.length; 
 
 // Export ports as inputs
@@ -39,9 +38,8 @@ async.each(BATHROOM_PORTS, function(item, callback){
   // Initialize
   var input = bathroomInputs[i] = gpio.export(port, {direction: 'in', interval:200, 
     ready: function() {
-      currentSate[i] = input.value;
-      console.log("Initial value for input #" + i + ": " + value);
-      sendStateUpdateToServer(i, value);
+      console.log("Initial value for input #" + i + ": " + input.value);
+      sendStateUpdateToServer(i, input.value);
       callback();
     }
   });
