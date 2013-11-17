@@ -18,7 +18,7 @@ ddpclient.connect(function(error) {
 
 
 var gpio = require("gpio");
-var async = require"async");
+var async = require("async");
 var WEB_SERVER_URL = "192.168.28.15";
 
 // Bathroom microswitch ports
