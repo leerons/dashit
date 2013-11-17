@@ -22,9 +22,9 @@ ddpclient.connect(function(error) {
 });
 
 // Bathroom microswitch ports
-var BATHROOM_PORTS = [{"index": 0, "portID": 4}, 
-                      {"index": 1, "portID": 3}, 
-                      {"index": 2, "portID": 2}];
+var BATHROOM_PORTS = [{"index": 0, "portID": 0}, 
+                      {"index": 1, "portID": 1}, 
+                      {"index": 2, "portID": 4}];
 
 var pendingPorts = BATHROOM_PORTS.length; 
 
