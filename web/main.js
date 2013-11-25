@@ -69,7 +69,6 @@ if (Meteor.isClient) {
 
   Template.bathrooms.rooms = function(){
     var state = BathroomsState.findOne({floor: currentFloor});
-    console.log("rooms: "+state.rooms);
     var roomsArray = [];
     for(var i = 0; i < state.rooms.length; i++){
       roomsArray[i] = { "index": i,
