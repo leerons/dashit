@@ -1,0 +1,1 @@
+CLOSE = "close", OPEN = "open", currentFloor = 2;

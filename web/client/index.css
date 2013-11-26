@@ -18,7 +18,7 @@ html, body{
     height: 15%;
     top: 5%;
     left: 32.5%;*/
-    background-image: url("logo-big.png");
+    background-image: url("/logo-big.png");
     background-size: contain;
     background-repeat:no-repeat;
 }
@@ -57,37 +57,37 @@ html, body{
 }
 
 .close{
-    background-image: url("door-close.jpg");
+    background-image: url("/door-close.jpg");
     background-size: contain;
     background-repeat:no-repeat;
 }
 
 .open{
-    background-image: url("door-open.jpg");
+    background-image: url("/door-open.jpg");
     background-size: contain;
     background-repeat:no-repeat;
 }
 
 .red{
-    background-image: url("indicator-light-red.jpg");
+    background-image: url("/indicator-light-red.jpg");
     background-size: contain;
     background-repeat:no-repeat;
 }
 
 .green{
-    background-image: url("indicator-light-green.jpg");
+    background-image: url("/indicator-light-green.jpg");
     background-size: contain;
     background-repeat:no-repeat;
 }
 
 .woohoo{
-    background-image: url("woohoo.png");
+    background-image: url("/woohoo.png");
     background-size: contain;
     background-repeat:no-repeat;
 }
 
 .oops{
-    background-image: url("oops.png");
+    background-image: url("/oops.png");
     background-size: contain;
     background-repeat:no-repeat;
 }
