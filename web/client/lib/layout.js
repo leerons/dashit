@@ -9,7 +9,7 @@ Layout.resizeLayout = function(){
   var contentDiv = $("#content");
   if(bodyWidth > bodyHeight * 0.6){
     var contentDivWidth = Math.round(bodyHeight * 0.85);
-    var contentDivHeight =  Math.round(bodyHeight * 0.7);
+    var contentDivHeight =  Math.round(bodyHeight * 0.65);
     var contentDivMarginLeft = Math.round((bodyWidth - contentDivWidth) / 2);
     contentDiv.height(contentDivHeight).width(contentDivWidth)
       .css("left", contentDivMarginLeft);
@@ -38,9 +38,9 @@ Layout.bathroomsLayout = function(parent){
   var parentWidth = parent.width();
   var parentPosition = parent.position();
 
-  var doorHeight = Math.round(parentHeight * 0.57);
+  var doorHeight = Math.round(parentHeight * 0.6);
   var doorWidth = Math.round(doorHeight * 0.496);
-  var doorsGap = Math.round(parentWidth * 0.1); 
+  var doorsGap = Math.round(parentWidth * 0.15); 
 
   // Indicator lights
   var indicatorLightWidth = Math.round(doorWidth * 0.163);
