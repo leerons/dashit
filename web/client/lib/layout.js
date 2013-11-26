@@ -51,7 +51,7 @@ Layout.bathroomsLayout = function(parent){
   // Doors
   var doorsTop = Math.round(indicatorLightWidth * 1.166);
   $(".door").css("top", doorsTop).height(doorHeight).width(doorWidth);
-  var doorsCount = 3;
+  var doorsCount = Template.bathrooms.rooms().length;
 
   // Bathrooms
   for(var i = 0; i < doorsCount; i++){
