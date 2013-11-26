@@ -14,17 +14,16 @@ html, body{
 
 #logo{
     position: absolute;
-    width: 35%;
+    /*width: 35%;
     height: 15%;
     top: 5%;
-    left: 32.5%;
+    left: 32.5%;*/
     background-image: url("logo-big.png");
     background-size: contain;
     background-repeat:no-repeat;
 }
 
 #floor{
-    height: 30%;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -51,6 +50,10 @@ html, body{
 
 #bathrooms, #room_0, #room_1, #room_2, .door, .indicator-light, #message{
     position: absolute;
+}
+
+#bathrooms {
+    bottom: -3px;
 }
 
 .close{

@@ -5,9 +5,11 @@ BathroomsState = new Meteor.Collection("bathrooms_state");
 
 // Client
 if (Meteor.isClient) {
-  $( document ).ready(function() {
-    resizeLayout();    
-    $( window ).resize(resizeLayout);
+
+  Meteor.subscribe("bathroomsCurrentState");
+
+  Meteor.startup(function() {    
+    $(window).resize(resizeLayout);
   });
 
   function resizeLayout(){
@@ -17,55 +19,66 @@ if (Meteor.isClient) {
 
     // Content div
     var contentDiv = $("#content");
-    var contentDivWidth = bodyHeight * 0.8333;
-    var contentDivMarginLeft = (bodyWidth - contentDivWidth) / 2;
-    contentDiv.width(contentDivWidth);
-    contentDiv.css("margin-left", contentDivMarginLeft);
+    if(bodyWidth > bodyHeight * 0.6){
+      var contentDivWidth = bodyHeight * 0.85;
+      var contentDivHeight =  bodyHeight * 0.7;
+      var contentDivMarginLeft = (bodyWidth - contentDivWidth) / 2;
+      contentDiv.height(contentDivHeight).width(contentDivWidth)
+        .css("left", contentDivMarginLeft);
+    } else {
+      var contentDivWidth = bodyWidth;
+      var contentDivHeight = bodyWidth * 1.18;
+      contentDiv.height(contentDivHeight).width(contentDivWidth).css("left", 0);  
+    }
+    $("#floor").css("top", contentDivHeight);
 
-    bathroomsLayout(bodyHeight, bodyWidth);
+    // Logo
+    var logoDiv = $("#logo");
+    var logoDivHeight = contentDivHeight * 0.22;
+    var logoDivWidth = logoDivHeight * 2.8;
+    var logoLeft = (contentDivWidth - logoDivWidth) / 2;
+    var logoDivTop = contentDivHeight * 0.05;
+    logoDiv.width(logoDivWidth).height(logoDivHeight).css({"left": logoLeft, "top": logoDivTop});
 
-    
+    bathroomsLayout(contentDiv);
   }
 
   function messageLayout(){
     var messageTop = $("#floor").position().top * 1.15;
-    $("#message").css("top", messageTop)
+    $("#message").css("top", messageTop);
   }
 
-  function bathroomsLayout(bodyHeight, bodyWidth){
-    if(bodyHeight == null){
-      var body = $("body");
-      var bodyHeight = body.height();
-      var bodyWidth = body.width();
-    }
+  function bathroomsLayout(parent){
+    parent = parent || $("#content");
+    var parentHeight = parent.height();
+    var parentWidth = parent.width();
+    var parentPosition = parent.position();
 
-    
-    var doorHeight = bodyHeight * 0.4;
+    var doorHeight = parentHeight * 0.57;
     var doorWidth = doorHeight * 0.496;
-    var doorsGap = bodyWidth * 0.1; 
+    var doorsGap = parentWidth * 0.1; 
 
     // Indicator lights
     var indicatorLightWidth = doorWidth * 0.163;
     var indicatorLightLeft = (doorWidth - indicatorLightWidth) / 2;
-    var indicatorLightTop = indicatorLightWidth * 1.166;
     $(".indicator-light").height(indicatorLightWidth).width(indicatorLightWidth)
-    .css({"left": indicatorLightLeft}).css({"top": - indicatorLightTop});
+      .css({"left": indicatorLightLeft});
 
     // Doors
-    $(".door").height(doorHeight).width(doorWidth);
+    var doorsTop = indicatorLightWidth * 1.166;
+    $(".door").css("top", doorsTop).height(doorHeight).width(doorWidth);
+    var doorsCount = 3;
 
     // Bathrooms
-    for(var i = 0; i < 3; i++){
+    for(var i = 0; i < doorsCount; i++){
       var left = i * (doorWidth + doorsGap);
-      $("#room_"+i).css("left",left)
+      $("#room_"+i).css("left",left);
     }
 
-    var bathroomsBottom = $("#floor").position().top - 3;
-    var bathroomsDiv = $("#bathrooms");
-    bathroomsDiv.css("bottom", bathroomsBottom);
+    var doorsWidth = doorsCount * doorWidth + (doorsCount - 1 ) * doorsGap;
+    var doorsStartLeft = (parentWidth - doorsWidth) / 2;
+    $("#bathrooms").height(doorsTop + doorHeight).width(doorsWidth).css("left", doorsStartLeft); 
   }
-
-  Meteor.subscribe("bathroomsCurrentState");
 
   Template.bathrooms.rooms = function(){
     var state = BathroomsState.findOne({floor: currentFloor});
@@ -87,6 +100,10 @@ if (Meteor.isClient) {
       }
     }
     return open;
+  }
+
+  Template.content.isBathroomsStateSet = function(){
+    return BathroomsState.findOne({floor: currentFloor}) != undefined;
   }
 
   Template.message.title = function(){
@@ -115,6 +132,7 @@ if (Meteor.isClient) {
 
   Template.bathrooms.rendered = bathroomsLayout;
   Template.message.rendered = messageLayout;
+  Template.content.rendered = resizeLayout;
 }
 
 
@@ -122,7 +140,7 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    if(BathroomsState.find({floor:currentFloor}).count == 0){
+    if(BathroomsState.find({floor:currentFloor}).count() == 0){
       BathroomsState.insert({floor:currentFloor, rooms: [CLOSE, CLOSE, CLOSE]});  
     }   
   });

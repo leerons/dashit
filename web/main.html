@@ -6,16 +6,21 @@
 <body>
   <div id="floor" />
   <div id="content">
-    <div id="logo"></div>
-    <div id="bathrooms">
-        {{> bathrooms}}
-    </div>
-    <div id="message">
-        {{> message}}
-    </div>
+    {{> content}}
   </div> 
 </body>
 
+<template name="content">
+  <div id="logo"></div>
+  {{#if isBathroomsStateSet}}
+  <div id="bathrooms">
+    {{> bathrooms}}
+  </div>
+  <div id="message">
+    {{> message}}
+  </div>
+  {{/if}}
+</template>
 
 <template name="bathrooms">
   {{#each rooms}}
