@@ -2,7 +2,7 @@ dashit
 ======
 
 A Bathroom monitoring and queue management system, developed as part of the WiX 2013 employees only hackathon.
-Utilising: Raspbery Pi, Node.js &amp; Meteor.js 
+Utilizing: Raspbery Pi, Node.js &amp; Meteor.js 
 
 ![Open](readme-resources/open.jpg?raw=true)
 
