@@ -29,8 +29,16 @@ if (Meteor.isClient) {
     return open;
   }
 
-  Template.content.isBathroomsStateSet = function(){
+  function isBathroomsStateSet(){
     return BathroomsState.findOne({floor: currentFloor}) != undefined;
+  }
+
+  Template.wall.isBathroomsStateSet = function(){
+    return isBathroomsStateSet();
+  }
+
+  Template.floor.isBathroomsStateSet = function(){
+    return isBathroomsStateSet();
   }
 
   Template.message.title = function(){
@@ -59,5 +67,5 @@ if (Meteor.isClient) {
 
   Template.bathrooms.rendered = Layout.bathroomsLayout;
   Template.message.rendered = Layout.messageLayout;
-  Template.content.rendered = Layout.resizeLayout;
+  Template.wall.rendered = Layout.resizeLayout;
 }

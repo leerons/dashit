@@ -6,7 +6,7 @@ Layout.resizeLayout = function(){
   var bodyWidth = body.width();
 
   // Content div
-  var contentDiv = $("#content");
+  var contentDiv = $("#wall");
   if(bodyWidth > bodyHeight * 0.6){
     var contentDivWidth = Math.round(bodyHeight * 0.85);
     var contentDivHeight =  Math.round(bodyHeight * 0.65);
@@ -33,7 +33,7 @@ Layout.resizeLayout = function(){
 
 // Bathrooms graphics
 Layout.bathroomsLayout = function(parent){
-  parent = parent || $("#content");
+  parent = parent || $("#wall");
   var parentHeight = parent.height();
   var parentWidth = parent.width();
   var parentPosition = parent.position();
@@ -66,6 +66,10 @@ Layout.bathroomsLayout = function(parent){
 
 // Messages
 Layout.messageLayout = function(){
-  var messageTop = Math.round($("#floor").position().top * 1.15);
-  $("#message").css("top", messageTop);
+  // var messageTop = Math.round($("#floor").position().top * 1.15);
+  var body = $("body");
+  var bodyHeight = body.height();
+  var messageWidth = Math.round(bodyHeight * 0.50);
+  $("#message").width(messageWidth);
+  //TODO: Height
 }

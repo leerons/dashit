@@ -4,18 +4,26 @@
 </head>
 
 <body>
-  <div id="floor" />
-  <div id="content">
-    {{> content}}
+  <div id="floor">
+    <div id="floor-shading" />
+    {{> floor}}
+  </div>
+  <div id="wall">
+    <div id="logo"></div>
+    {{> wall}}
   </div> 
 </body>
 
-<template name="content">
-  <div id="logo"></div>
+<template name="wall">  
   {{#if isBathroomsStateSet}}
   <div id="bathrooms">
     {{> bathrooms}}
   </div>
+  {{/if}}
+</template>
+
+<template name="floor">
+  {{#if isBathroomsStateSet}}
   <div id="message">
     {{> message}}
   </div>
